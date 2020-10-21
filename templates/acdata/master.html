@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'/>
+
+    <link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Lato:400,900,700,400italic' />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'acdata/content/bootstrap.min.css' %}" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'acdata/content/portal.css' %}" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'acdata/content/dashboard.css' %}" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'acdata/content/site.css' %}" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'acdata/content/override.css' %}" />
+
+    <script src="{% static 'acdata/scripts/modernizr-2.6.2.js' %}"></script>
+
+    <title>{{ title }}</title>
+
+</head>
+
+<body>
+       <!---------- Page wrapper ----------->
+        <div class="dash dash-fixed" role="application">
+
+            <!---------- Left Nav Header ----------->
+            <nav class="dash-nav dash-nav-accent-2" id="dash-nav">
+                <header>
+                    <a class="dash-nav-toggler">
+                        <span class="dash-nav-toggler-icon"></span>
+                    </a>
+                    <div class="dash-nav-logo">
+                        <a class="dash-nav-logo-link" href="/users">
+                            <label ID="lblCompanyName">{{ company }}</label>
+                        </a>
+                    </div>
+                </header>
+                <!----------Left Nav Options ----------->
+                <ul class="dash-nav-list">
+                    <li>
+                        <a id="dash_home" href="/home" class="dash-nav-item">
+                            <span class="icon fa fa-home"></span>
+                            Dashboard Home
+                        </a>
+                    </li>
+                    <li>
+                        <a id="dash_services" href="/services" class="dash-nav-item ">
+                            <span class="icon fa fa-file-text"></span>
+                            My Services
+                        </a>
+                    </li>
+                </ul>
+                <hr class="w-100 mb-0 mt-0 p-0 featurette-divider" />
+                <!----------Admin Login----------------->
+                <div class="h3 p-0 mb-0 text-left ml-3" style="color: #d8d9dd;">
+                    Available Options</div>
+                <div class="menu-panel">
+                    <ul class="dash-nav-list">
+                        <li>
+                            <a id="admin_users" href="/users" class="dash-nav-item">
+                                <span class="icon fa fa-user-circle"></span>
+                                Manage Users
+                            </a>
+                        </li>
+                        <li>
+                            <a id="admin_content" href="/content" class="dash-nav-item">
+                                <span class="icon fa fa-pencil"></span>
+                                Check Content
+                            </a>
+                        </li>
+                        <li>
+                            <a id="dash_lists" href="/lists" class="dash-nav-item">
+                                <span class="icon fa fa-align-justify"></span>
+                                B2B List Builder
+                            </a>
+                        </li>
+                        <li>
+                            <a id="dash_merchant" href="/about" class="dash-nav-item">
+                                <span class="icon fa fa-money"></span>
+                                Info
+                            </a>
+                        </li>`
+                    </ul>
+                </div>
+
+                <!----------Left Nav Footer----------->
+                <footer class="dash-nav-tools">
+                    <div class="row m-0 p-0">
+                        <a href="settings.html" title="Account Settings"><span class="icon fa fa-cog"></span></a>
+                        <a href="#" title="Support"><span class="icon fa fa-question-circle"></span></a>
+                    </div>
+                    <div class="row m-0 p-0">
+                        <span id="lblWebsite_Version">{{ version }}</span>
+                    </div>
+                </footer>
+
+            </nav>
+
+            <!---------- Right Section ----------->
+            <div class="dash-app" style="margin-top:25px !important;" id="dash-app">
+                <!----------Right Toolbar Top-->
+                <header class="dash-toolbar dash-toolbar-accent-2">
+
+                    <a class="dash-nav-toggler">
+                        <span class="dash-nav-toggler-icon"></span>
+                    </a>
+
+                    <!--Search Bar -->
+                    <div role="search" class="dash-toolbar-form">
+                        <label for="dash-top-search"></label>
+                        <input id="dash-top-search" type="text" class="dash-toolbar-input"
+                                name="dash-search" placeholder="Search">
+                    </div>
+                    <!-- Manage Account -->
+                    <div class="dropdown dash-toolbar-dropdown">
+                        <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle"
+                           data-toggle="dropdown" href=r"https://example.com">
+                            <span class="d-none d-md-inline-block">
+                                <span class="fa fa-user-circle mr-2"></span>
+                                <label id="lblUsername">{{ company }}</label>
+                            </span>
+                            <span class="d-md-none">
+                                <span class="fa fa-user-circle"></span>
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="username-dropdown">
+                            <a class="dropdown-item" href="/home">Dashboard</a>
+                            <a class="dropdown-item" href="/services">My Services</a>
+                            <a class="dropdown-item" href="/settings">Accounts</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Log out</a>
+                        </div>
+                    </div>
+                </header>
+
+                <!----------Main Content ----------->
+                <main>
+                    <div class="dash-titlebar">
+                        <div class="featurette-heading">
+                            <span>{{ heading }}</span>
+                        </div>
+                    </div>
+                    {% block content %}{% endblock %}
+                </main>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"                          integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <script src="{% static 'acdata/scripts/charming-pro.js' %}"></script>
+</body>
+</html>
